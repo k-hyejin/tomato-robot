@@ -20,13 +20,29 @@
 
 ## 현재 구현 내용
 
-- XML annotation 기반 토마토 데이터셋 분석
-- 이미지/라벨 train-test split
-- bounding box 크기, 비율, 객체 수, 중심 좌표 분포 시각화
-- 샘플 이미지와 annotation 시각화
-- PyTorch 기반 딥러닝 추론 실험
-- 웹캠 촬영 흐름 작성
-- 향후 로봇팔 제어에 사용할 토마토 중심 좌표 분석
+### AI · Computer Vision
+
+* XML annotation 기반 토마토 데이터셋 분석
+* 이미지/라벨 train-test split
+* bounding box 크기, 비율, 객체 수, 중심 좌표 분포 시각화
+* 샘플 이미지와 annotation 시각화
+* PyTorch 기반 딥러닝 추론 실험
+* 웹캠 및 라즈베리파이 카메라 촬영 흐름 작성
+* 향후 로봇팔 제어에 사용할 토마토 중심 좌표 분석
+
+### Arduino · Robot Arm Control
+
+* Raspberry Pi와 Arduino 간 Serial 통신 구현
+* 토마토 중심 좌표를 이용한 로봇팔 제어 로직 작성
+* 4자유도 로봇팔 역기구학(Inverse Kinematics) 구현
+* PCA9685 기반 다중 서보모터 제어
+* 서보모터 보간 제어를 통한 부드러운 관절 이동
+* 릴레이 제어를 이용한 흡입 모터 동작 구현
+* 카메라 좌표를 실제 작업 좌표(mm)로 변환하는 좌표계 보정
+* TB6612FNG 모터 드라이버를 이용한 이동 플랫폼 제어
+* IR 센서를 이용한 라인트래킹 기능 구현
+* 수확 완료 후 자동 복귀 및 재탐색 제어 로직 구현
+
 
 ## 시스템 흐름
 
@@ -58,21 +74,28 @@ Arduino / Servo motor 제어
 
 ## 기술 스택
 
-- Python
-- PyTorch / torchvision
-- OpenCV
-- PIL
-- scikit-learn
-- matplotlib
-- Arduino / servo motor control concept
+### Software
 
-## 하드웨어 구성
+* Python
+* PyTorch
+* OpenCV
+* PIL
+* scikit-learn
+* matplotlib
+* Arduino IDE
 
-- Raspberry Pi
-- USB 카메라 
-- Arduino 보드
-- Servo motor / 로봇팔 프레임
-- 모터 구동용 외부 전원
+### Hardware
+
+* Raspberry Pi 4
+* Arduino Mega
+* PCA9685 Servo Driver
+* Servo Motor
+* Vacuum Pump
+* Relay Module
+* TB6612FNG Motor Driver
+* IR Line Tracking Sensor
+* USB Camera
+
 
 ## 실행 방법
 
@@ -127,3 +150,4 @@ XML annotation 파일을 파싱해 bounding box와 객체 라벨을 추출합니
 - 이미지 데이터셋은 학습 전에 annotation 품질과 bounding box 분포를 확인해야 한다는 점을 배웠습니다.
 - 컴퓨터 비전 결과를 실제 로봇팔 제어에 연결하려면 좌표계 변환과 하드웨어 보정이 중요하다는 점을 경험했습니다.
 - 공학경진대회 프로젝트는 코드뿐 아니라 문제 정의, 시스템 흐름, 시연 가능성, 개선 계획을 함께 정리해야 설득력이 높아진다는 점을 배웠습니다.
+- 컴퓨터 비전에서 추출한 객체 좌표를 실제 로봇팔 동작으로 연결하기 위해 Serial 통신, 좌표계 변환, 역기구학 계산이 필요하다는 점을 학습했습니다.
