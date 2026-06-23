@@ -4,7 +4,10 @@
 
 ## 프로젝트 개요
 
-이 저장소의 현재 코드는 Colab에서 작성한 `tomato.py`를 기반으로 합니다. 주요 내용은 토마토 이미지 데이터셋 탐색, 학습/검증 데이터 분할, annotation 분석, bounding box 시각화, 딥러닝 추론, 라즈베리파이 카메라 촬영 흐름입니다.
+이 저장소는 Python 기반 객체 탐지 코드(`tomato.py`)와 Arduino 기반 로봇팔 제어 코드(`robot_arduino.ino`)로 구성되어 있습니다.
+
+Python에서는 토마토 탐지와 중심 좌표 계산을 수행하고, Arduino에서는 전달받은 좌표를 기반으로 역기구학 계산 및 로봇팔 제어를 수행합니다.
+
 
 최종 목표는 아래와 같습니다.
 
@@ -67,10 +70,12 @@ Arduino / Servo motor 제어
 
 ## 저장소 파일 구성
 
-| 파일 | 설명 |
-| --- | --- |
-| `tomato.py` | Colab 기반 데이터 분석, 학습 준비, 추론, 라즈베리파이 카메라 테스트 코드 |
-| `README.md` | 프로젝트 소개와 정리 문서 |
+| 파일                  | 설명                                                                        |
+| ------------------- | ------------------------------------------------------------------------- |
+| `tomato.py`         | Colab 기반 데이터 분석, 학습 준비, 객체 탐지 및 토마토 중심 좌표 추출 코드                           |
+| `robot_arduino.ino` | Arduino 기반 로봇팔 제어 코드. Serial 통신, 역기구학(IK), 서보모터 제어, 흡입 모터 제어, 라인트래킹 기능 포함 |
+| `README.md`         | 프로젝트 소개 및 시스템 구성 문서                                                       |
+
 
 ## 기술 스택
 
@@ -87,7 +92,7 @@ Arduino / Servo motor 제어
 ### Hardware
 
 * Raspberry Pi 4
-* Arduino Mega
+* Arduino UNO
 * PCA9685 Servo Driver
 * Servo Motor
 * Vacuum Pump
